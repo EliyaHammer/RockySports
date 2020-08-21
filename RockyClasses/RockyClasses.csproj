@@ -60,8 +60,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\ClockDAO.cs" />
+    <Compile Include="DAL\ClockEnum.cs" />
     <Compile Include="DAL\ClockOneDAO.cs" />
+    <Compile Include="DAL\ClockThreeDAO.cs" />
+    <Compile Include="DAL\ClockTwoDAO.cs" />
+    <Compile Include="DAL\GetDataDAO.cs" />
     <Compile Include="DAL\IClockDAO.cs" />
+    <Compile Include="Facades\ClockFacade.cs" />
+    <Compile Include="Facades\GetDataFacade.cs" />
     <Compile Include="POCO\DaysOfWeek.cs" />
     <Compile Include="POCO\Employee.cs" />
     <Compile Include="POCO\IsAbsance.cs" />
@@ -69,6 +75,7 @@
     <Compile Include="POCO\LogsHolder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -77,5 +84,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
