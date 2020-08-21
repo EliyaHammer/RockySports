@@ -14,7 +14,7 @@ namespace RockyClasses.DAL
     {
         public List<Employee> logs { get; private set; }
 
-
+        // the hebrew
         protected override Employee[] TakeData(string logLocation)
         {
                 using (FileStream streamer = File.Open(logLocation, FileMode.Open, FileAccess.Read))

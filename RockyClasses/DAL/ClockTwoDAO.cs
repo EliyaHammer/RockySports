@@ -13,6 +13,7 @@ namespace RockyClasses.DAL
 {
     class ClockTwoDAO : ClockDAO
     {
+        //the 00-month
         public List<Employee> logs { get; private set; }
 
         protected override Employee[] TakeData(string logLocation)
@@ -35,7 +36,6 @@ namespace RockyClasses.DAL
                                             // if makes another log > check if there's another table after this one.
                 {
                     Employee log = null;
-                    column = 0;
 
                     string name = null;
                     if (AttendaceLog.Rows[rowStart][column] is DBNull || AttendaceLog.Rows[rowStart][column] is null)
@@ -86,8 +86,6 @@ namespace RockyClasses.DAL
                         TimeSpan[] checkingTimes = new TimeSpan[4];
                         int day = 0;
                         DateTime date = new DateTime();
-                        string dayInWeekRaw = null;
-                        int dayWeek = 0;
 
                         if (!(AttendaceLog.Rows[rowStart][column] is DBNull))
                         {
@@ -95,32 +93,6 @@ namespace RockyClasses.DAL
                             if (allRaw != null && allRaw.Length > 1)
                             {
                                 day = Convert.ToInt32(allRaw.Substring(0, 2));
-                                dayInWeekRaw = allRaw.Substring(3, 2);
-
-                                switch (dayInWeekRaw.ToUpper())
-                                {
-                                    case "SUNDAY":
-                                        dayWeek = 1;
-                                        break;
-                                    case "MONDAY":
-                                        dayWeek = 2;
-                                        break;
-                                    case "TUESDAY":
-                                        dayWeek = 3;
-                                        break;
-                                    case "WEDNESDAY":
-                                        dayWeek = 4;
-                                        break;
-                                    case "THURSDAY":
-                                        dayWeek = 5;
-                                        break;
-                                    case "FRIDAY":
-                                        dayWeek = 6;
-                                        break;
-                                    case "SATURDAY":
-                                        dayWeek = 7;
-                                        break;
-                                }
                                 date = new DateTime(year, month, day);
                             }
                         }
@@ -163,7 +135,6 @@ namespace RockyClasses.DAL
                         if (date != check)
                         {
                             log.Date = date;
-                            log.DayOfWeek = dayWeek;
                             log.ChecksInOne = checkingTimes[0];
                             log.ChecksOutOne = checkingTimes[1];
                             log.ChecksInTwo = checkingTimes[2];

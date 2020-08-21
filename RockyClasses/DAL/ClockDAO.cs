@@ -1,7 +1,9 @@
 ﻿using ExcelDataReader.Log;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,13 +11,14 @@ namespace RockyClasses.DAL
 {
     abstract class ClockDAO : IClockDAO
     {
+        //the all report
         protected abstract Employee[] TakeData(string logLocation);
         protected void PutInDB (Employee[] logs) 
         {
-        using (Model1 entity = new Model1())
+            using (Model1 entity = new Model1())
             {
-                entity.Employees.AddRange(logs);
-                entity.SaveChanges();
+                    entity.Employees.AddRange(logs);
+                    entity.SaveChanges();
             }
         }
         public void StartOperation (string logLocation)

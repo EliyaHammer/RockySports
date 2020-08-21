@@ -129,34 +129,6 @@ namespace RockyClasses.DAL
 
                         columnCounter++;
 
-                        string dayOfWeekRaw = null;
-                        int? dayOfWeek = null;
-
-                        if (!(AttendaceLog.Rows[rowCount][columnCounter] is DBNull))
-                        {
-                            dayOfWeekRaw = (string)AttendaceLog.Rows[rowCount][columnCounter];
-
-                            switch (dayOfWeekRaw.ToUpper())
-                            {
-                                case "SUNDAY": dayOfWeek = 1;
-                                    break;
-                                case "MONDAY": dayOfWeek = 2;
-                                    break;
-                                case "TUESDAY": dayOfWeek = 3;
-                                    break;
-                                case "WEDNESDAY": dayOfWeek = 4;
-                                    break;
-                                case "THURSDAY": dayOfWeek = 5;
-                                    break;
-                                case "FRIDAY": dayOfWeek = 6;
-                                    break;
-                                case "SATURDAY": dayOfWeek = 7;
-                                    break;
-                            }
-                        }
-                        else
-                            throw new NullReferenceException($"Day of week is null: row- {rowCount}, column- {columnCounter}");
-
                         //getting the time and saves it: for the 4 cells of in and out, for one row
                         for (int i = 0; i <= 3; i++)
                         {
@@ -177,8 +149,8 @@ namespace RockyClasses.DAL
                         }
 
                         logRaw.ChecksInOne = checkingTimes[0];
-                        logRaw.ChecksInTwo = checkingTimes[1];
-                        logRaw.ChecksOutOne = checkingTimes[2];
+                        logRaw.ChecksOutOne = checkingTimes[1];
+                        logRaw.ChecksInTwo = checkingTimes[2];
                         logRaw.ChecksOutTwo = checkingTimes[3];
                         TimeSpan zero = new TimeSpan(0, 0, 0);
                         if ((logRaw.ChecksInOne is null || logRaw.ChecksInOne == zero) && (logRaw.ChecksInTwo == zero || logRaw.ChecksInTwo is null))
@@ -187,7 +159,6 @@ namespace RockyClasses.DAL
                         }
 
                         logRaw.Date = date;
-                        logRaw.DayOfWeek = dayOfWeek;
 
                         logs.Add(logRaw);
                         logRaw = new Employee() { Name = logRaw.Name, ID = logRaw.ID };
@@ -267,8 +238,8 @@ namespace RockyClasses.DAL
                         }
 
                         logRaw.ChecksInOne = checkingTimes[0];
-                        logRaw.ChecksInTwo = checkingTimes[1];
-                        logRaw.ChecksOutOne = checkingTimes[2];
+                        logRaw.ChecksOutOne = checkingTimes[1];
+                        logRaw.ChecksInTwo = checkingTimes[2];
                         logRaw.ChecksOutTwo = checkingTimes[3];
                         TimeSpan zero = new TimeSpan(0, 0, 0);
                         if ((logRaw.ChecksInOne is null || logRaw.ChecksInOne == zero) && (logRaw.ChecksInTwo == zero || logRaw.ChecksInTwo is null))

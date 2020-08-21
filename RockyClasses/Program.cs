@@ -16,11 +16,13 @@ namespace RockyClasses
             //NEED TO ALTER THE DB FOR THE INFORMATION MAAKAV !!
             //NEED TO MAKE THE LOGS !!!!!!!!!!
             //WHEN TAKING OUT FROM DB > MUST USE CALCULATE CLASS ! 
-            //NEED TO NOT BE ABLE TO IMPORT TWICE
+            //NEED TO NOT BE ABLE TO IMPORT TWICE!!!!!!!!!
+            //check if hebrew is workign
 
-            UserInterface clock = new UserInterface(DAL.ClocksEnum.ClockOne);
+            //clock two doesnt show total lates etc . 
+            UserInterface clock = new UserInterface(DAL.ClocksEnum.ClockThree);
 
-            Console.WriteLine(clock.Import(@"C:\Users\ELIYA\Desktop\All Report.xls"));
+            Console.WriteLine(clock.Import(@"C:\Users\ELIYA\Downloads\254_report.xls"));
         }
     }
 }
