@@ -17,7 +17,7 @@ namespace RockyClasses.DAL
         public List<Employee> logs { get; private set; }
 
 
-        protected override void TakeData(string logLocation)
+        protected override Employee[] TakeData(string logLocation)
         {
             // NEEDS TO MAKE ALL THE CHECKUPS !!!! AND EXCEPTIONS ! 
 
@@ -50,7 +50,7 @@ namespace RockyClasses.DAL
                 for (int f = 0; f < runTimes; f++)
                 {
 
-                    Employee logRaw = null;
+                    Employee logRaw = new Employee();
 
                     if (!(AttendaceLog.Rows[rowCount][2] is DBNull))
                     {
@@ -332,6 +332,8 @@ namespace RockyClasses.DAL
                 }
 
             }
+
+            return logs.ToArray();
         }
     }
 }

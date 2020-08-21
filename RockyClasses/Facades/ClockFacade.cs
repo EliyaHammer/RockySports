@@ -10,7 +10,7 @@ namespace RockyClasses.Facades
 {
     class ClockFacade
     {
-        private IClockDAO MyClock { get; set; }
+        private ClockDAO MyClock { get; set; }
         private GetDataFacade Data { get; set; }
 
         public ClockFacade(ClocksEnum clock)

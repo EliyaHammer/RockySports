@@ -70,7 +70,6 @@
     <Compile Include="Facades\GetDataFacade.cs" />
     <Compile Include="POCO\DaysOfWeek.cs" />
     <Compile Include="POCO\Employee.cs" />
-    <Compile Include="POCO\IsAbsance.cs" />
     <Compile Include="Entity\Model1.cs" />
     <Compile Include="POCO\LogsHolder.cs" />
     <Compile Include="Program.cs" />

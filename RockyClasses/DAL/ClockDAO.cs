@@ -9,7 +9,7 @@ namespace RockyClasses.DAL
 {
     abstract class ClockDAO : IClockDAO
     {
-        protected abstract void TakeData(string logLocation);
+        protected abstract Employee[] TakeData(string logLocation);
         protected void PutInDB (Employee[] logs) 
         {
         using (Model1 entity = new Model1())
@@ -20,8 +20,8 @@ namespace RockyClasses.DAL
         }
         public void StartOperation (string logLocation)
         {
-            TakeData(logLocation);
-            PutInDB();
+            Employee[] logs = TakeData(logLocation);
+            PutInDB(logs);
         }
     }
 }

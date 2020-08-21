@@ -15,7 +15,7 @@ namespace RockyClasses.DAL
     {
         public List<Employee> logs { get; private set; }
 
-        protected override void TakeData(string logLocation)
+        protected override Employee[] TakeData(string logLocation)
         {
             int rowStart = 2;
             int column = 9;
@@ -192,6 +192,8 @@ namespace RockyClasses.DAL
                     }
                 }
             }
+
+            return logs.ToArray();
         }
     }
 }

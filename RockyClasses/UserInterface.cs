@@ -40,7 +40,7 @@ namespace RockyClasses
 
         public void StartOperation(string logLocation)
         {
-            MyClock.StartOperation(logLocation);
+            Clock.StartOperation(logLocation);
         }
 
         public LogsHolder GetLogsByEmpName(string name)

@@ -8,8 +8,6 @@ namespace RockyClasses.DAL
 {
     public interface IClockDAO
     {
-        void TakeData(string logLocation);
-        void PutInDB(Employee[] logs);
         void StartOperation(string clockLogLocation);
     }
 }

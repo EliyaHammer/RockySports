@@ -44,7 +44,6 @@ namespace RockyClasses
 
         public virtual DaysOfWeek DaysOfWeek { get; set; }
 
-        public virtual IsAbsance IsAbsance1 { get; set; }
 
 
     }
