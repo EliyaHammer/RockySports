@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RockyClasses.POCO
 {
-    class LogsHolder
+   public class LogsHolder
     {
         public Employee[] logs { get; private set; }
         public int TotalAbsence { get; private set; }

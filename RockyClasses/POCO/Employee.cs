@@ -9,6 +9,7 @@ namespace RockyClasses
     [Table("Employee")]
     public partial class Employee
     {
+
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -43,6 +44,8 @@ namespace RockyClasses
         public int? DayOfWeek { get; set; }
 
         public virtual DaysOfWeek DaysOfWeek { get; set; }
+
+        public int FourDigitID { get; set; }
 
 
 

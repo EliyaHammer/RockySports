@@ -64,13 +64,16 @@
     <Compile Include="DAL\ClockOneDAO.cs" />
     <Compile Include="DAL\ClockThreeDAO.cs" />
     <Compile Include="DAL\ClockTwoDAO.cs" />
+    <Compile Include="DAL\ExportMethods.cs" />
     <Compile Include="DAL\GetDataDAO.cs" />
     <Compile Include="DAL\IClockDAO.cs" />
     <Compile Include="Facades\ClockFacade.cs" />
+    <Compile Include="Facades\ExportDataFacade.cs" />
     <Compile Include="Facades\GetDataFacade.cs" />
     <Compile Include="POCO\DaysOfWeek.cs" />
     <Compile Include="POCO\Employee.cs" />
     <Compile Include="Entity\Model1.cs" />
+    <Compile Include="POCO\FormatsEnum.cs" />
     <Compile Include="POCO\LogsHolder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

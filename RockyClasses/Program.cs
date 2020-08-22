@@ -18,11 +18,14 @@ namespace RockyClasses
             //WHEN TAKING OUT FROM DB > MUST USE CALCULATE CLASS ! 
             //NEED TO NOT BE ABLE TO IMPORT TWICE!!!!!!!!!
             //check if hebrew is workign
+            //NEED TO WRITE THE LOGS
+            //NEED TO WRITE ALL THE EXCEPTIONS AND SHOW THEM !
+            //NEED TO FINISGH ALL THE EXPORTS !!
 
             //clock two doesnt show total lates etc . 
-            UserInterface clock = new UserInterface(DAL.ClocksEnum.ClockThree);
-
-            Console.WriteLine(clock.Import(@"C:\Users\ELIYA\Downloads\254_report.xls"));
+            //NEED TO WRITE IN THE APP CONFIG THE CLOCK TYPE
+            //NEED TO CHANGE THE PLACING OF THE SQL FILE 
+            //NED TO CHECK WHICH PIC IS WHICH CLOCK TYPE!
         }
     }
 }

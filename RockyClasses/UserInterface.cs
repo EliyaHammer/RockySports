@@ -3,13 +3,14 @@ using RockyClasses.Facades;
 using RockyClasses.POCO;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RockyClasses
 {
-    class UserInterface
+    public class UserInterface
     {
         private ClockFacade Clock { get; set; }
 
@@ -17,6 +18,14 @@ namespace RockyClasses
         {
             Clock = new ClockFacade(clockType);
         }
+
+        private void StartOperation(string logLocation)
+        {
+            Clock.StartOperation(logLocation);
+        }
+
+
+
 
         public bool Import(string fileLocation)
         {
@@ -38,9 +47,9 @@ namespace RockyClasses
             return true;
         }
 
-        public void StartOperation(string logLocation)
+        public bool UpdateLog(Employee oldLog, Employee newLog)
         {
-            Clock.StartOperation(logLocation);
+            return Clock.UpdateLog(oldLog, newLog);
         }
 
         public LogsHolder GetLogsByEmpName(string name)
@@ -56,6 +65,11 @@ namespace RockyClasses
         public LogsHolder GetByEmpMonthYear(int month, int year, string name)
         {
             return Clock.GetByEmpMonthYear(month, year, name);
+        }
+
+        public bool Export (Employee[] logs, string location, FormatsEnum formatType)
+        {
+            return Clock.Export(logs, location, formatType);
         }
     }
 }

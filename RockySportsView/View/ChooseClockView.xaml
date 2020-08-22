@@ -1,0 +1,15 @@
+﻿<Window x:Class="RockySportsView.View.ChooseClockView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RockySportsView.View"
+        mc:Ignorable="d"
+        Title="ChooseClockView" Height="450" Width="800">
+    <Grid>
+        <Button Name="clockOne" Content="ClockOne" HorizontalAlignment="Left" Height="81" Margin="85,141,0,0" VerticalAlignment="Top" Width="154"/>
+        <Button Name="clockTwo" Content="ClockTwo" HorizontalAlignment="Left" Height="81" Margin="321,141,0,0" VerticalAlignment="Top" Width="154"/>
+        <Button Name="clockThree" Content="ClockThree" HorizontalAlignment="Left" Height="81" Margin="563,141,0,0" VerticalAlignment="Top" Width="154"/>
+
+    </Grid>
+</Window>

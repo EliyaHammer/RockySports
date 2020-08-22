@@ -12,6 +12,7 @@ namespace RockyClasses.Facades
     {
         private ClockDAO MyClock { get; set; }
         private GetDataFacade Data { get; set; }
+        private ExportDataFacade ExportFacade { get; set; }
 
         public ClockFacade(ClocksEnum clock)
         {
@@ -31,6 +32,11 @@ namespace RockyClasses.Facades
             MyClock.StartOperation(logLocation);
         }
 
+        public bool UpdateLog (Employee oldLog, Employee newLog)
+        {
+            return MyClock.Update(oldLog, newLog);
+        }
+
         public LogsHolder GetLogsByEmpName(string name)
         {
             return Data.GetLogsByEmpName(name);
@@ -45,5 +51,12 @@ namespace RockyClasses.Facades
         {
             return Data.GetByEmpMonthYear(month, year, name);
         }
+
+        public bool Export (Employee[] logs, string location, FormatsEnum formatType)
+        {
+            ExportFacade = new ExportDataFacade(logs, location, formatType);
+            return ExportFacade.Export();
+        }
+
     }
 }

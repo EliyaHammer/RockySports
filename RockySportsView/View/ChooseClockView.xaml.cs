@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RockySportsView.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,18 +11,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RockySportsView
+namespace RockySportsView.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ChooseClockView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ChooseClockView : Window
     {
-        public MainWindow()
+        private ChooseClockVM VM { get; set; }
+        public ChooseClockView()
         {
+            VM = new ChooseClockVM();
+            this.DataContext = VM;
+
             InitializeComponent();
         }
     }
