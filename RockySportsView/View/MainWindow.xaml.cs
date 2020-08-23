@@ -1,7 +1,9 @@
 ﻿using RockyClasses;
+using RockySportsView.View;
 using RockySportsView.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,12 +27,12 @@ namespace RockySportsView
         private MainWindowVM viewModel { get; set; }
         public MainWindow()
         {
-            //here check if the sql exists, if not > create !
 
-            viewModel = new MainWindowVM();
+            viewModel = new MainWindowVM(this);
             this.DataContext = this.viewModel;
 
             InitializeComponent();
+
         }
     }
 }

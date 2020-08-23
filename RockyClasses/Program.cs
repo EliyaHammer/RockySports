@@ -26,6 +26,8 @@ namespace RockyClasses
             //NEED TO WRITE IN THE APP CONFIG THE CLOCK TYPE
             //NEED TO CHANGE THE PLACING OF THE SQL FILE 
             //NED TO CHECK WHICH PIC IS WHICH CLOCK TYPE!
+            //[rogress bar
+            //check if its .xls > if not > message ! > or not giving the option to choose this file
         }
     }
 }
