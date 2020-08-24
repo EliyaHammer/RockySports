@@ -28,6 +28,7 @@ namespace RockyClasses
             //NED TO CHECK WHICH PIC IS WHICH CLOCK TYPE!
             //[rogress bar
             //check if its .xls > if not > message ! > or not giving the option to choose this file
+            //all the checkups that cant press if they didnt choose from list / etc ....
         }
     }
 }

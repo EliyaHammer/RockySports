@@ -1,8 +1,10 @@
-﻿using RockyClasses;
+﻿using Microsoft.Win32;
+using RockyClasses;
 using RockyClasses.DAL;
 using RockySportsView.View;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,24 @@ using System.Windows.Controls;
 
 namespace RockySportsView.ViewModel
 {
-    class MainWindowVM
+    class MainWindowVM : INotifyPropertyChanged
     {
         private UserInterface Interface { get; set; }
+        private string isSucceeded;
+        public string IsSucceeded { 
+            get
+            {
+                return isSucceeded;
+            }
+
+            set
+            {
+                isSucceeded = value;
+                OnPropertyChanged(IsSucceeded);
+            }
+        }
+        public string FilePath { get; set; }
+
         public MainWindowVM (Window hide)
         {
             if (ConfigurationManager.AppSettings["ClockType"] == "")
@@ -37,6 +54,11 @@ namespace RockySportsView.ViewModel
             //else > check the type > make a user interface.
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged (string name)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
 
         public void ChooseClock (Window hide)
         {
@@ -44,5 +66,14 @@ namespace RockySportsView.ViewModel
             clock.Show();
             hide.Close();
         }
+        public void Import ()
+        {
+            if (Interface.Import(FilePath) == true)
+                IsSucceeded = "ייבוא בוצע בהצלחה";
+            else
+                IsSucceeded = "הייבוא נכשל";
+        }
+
+
     }
 }
