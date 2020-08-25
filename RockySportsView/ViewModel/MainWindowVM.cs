@@ -16,23 +16,7 @@ namespace RockySportsView.ViewModel
 {
     class MainWindowVM : INotifyPropertyChanged
     {
-        private UserInterface Interface { get; set; }
-        private string isSucceeded;
-        public string IsSucceeded { 
-            get
-            {
-                return isSucceeded;
-            }
-
-            set
-            {
-                isSucceeded = value;
-                OnPropertyChanged(IsSucceeded);
-            }
-        }
-        public string FilePath { get; set; }
-
-        public MainWindowVM (Window hide)
+        public MainWindowVM(Window hide)
         {
             if (ConfigurationManager.AppSettings["ClockType"] == "")
             {
@@ -53,13 +37,48 @@ namespace RockySportsView.ViewModel
             //here check if the sql exists, if not > create !
             //else > check the type > make a user interface.
         }
+        private UserInterface Interface { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged (string name)
+        private string isSucceeded;
+        public string IsSucceeded { 
+            get
+            {
+                return this.isSucceeded;
+            }
+
+            set
+            {
+                this.isSucceeded = value;
+                OnPropertyChanged("IsSucceeded");
+            }
+        }
+        public string FilePath { get; set; }
+
+        private bool isEnabled = true;
+        public bool IsEnabled
         {
-            PropertyChanged(this, new PropertyChangedEventArgs(name));
+            get
+            {
+                return isEnabled;
+            }
+            set
+            {
+                isEnabled = value;
+                OnPropertyChanged("IsEnabled");
+            }
         }
 
+        //here make a variable for emp names 
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+
+        private void OnPropertyChanged (string name)
+        {
+            if (PropertyChanged != null)
+            PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
         public void ChooseClock (Window hide)
         {
             ChooseClockView clock = new ChooseClockView();
@@ -68,10 +87,44 @@ namespace RockySportsView.ViewModel
         }
         public void Import ()
         {
-            if (Interface.Import(FilePath) == true)
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "(.xls)|*.xls";
+            openFile.ShowDialog();
+            FilePath = openFile.FileName;
+
+            bool succeeded = false;
+
+            Task import = new Task(() =>
+            {
+                succeeded = Interface.Import(FilePath);
+            });
+
+            IsSucceeded = "";
+            import.Start();
+            isEnabled = false;
+            //here show the dots or whatever- use is completed
+            import.Wait();
+
+            if (succeeded == true)
                 IsSucceeded = "ייבוא בוצע בהצלחה";
             else
                 IsSucceeded = "הייבוא נכשל";
+
+            isEnabled = true;
+            //here stop the dots
+
+        }
+        private void DefineEmpList (int month = 0, int year = 0)
+        {
+            //this is already for choosing by times.
+            if (month == 0 || year == 0)
+            {
+            }
+
+            else
+            {
+
+            }
         }
 
 

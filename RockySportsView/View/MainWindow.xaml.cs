@@ -36,22 +36,9 @@ namespace RockySportsView
 
         }
 
-        public void ChooseFileButton_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "(.xls)|*.xls";
-            openFile.ShowDialog();
-            FilePathText.Text = openFile.FileName;
-        }
-
         private void ImportButton_Click(object sender, RoutedEventArgs e)
         {
-                Task import = new Task(() => viewModel.Import());
-
-                import.Start();
-
-
-                import.Wait();
+            viewModel.Import();         
         }
     }
 }

@@ -29,11 +29,6 @@ namespace RockySportsView.View
             InitializeComponent();
         }
 
-        private void clockOne_MouseEnter(object sender, MouseEventArgs e)
-        {
-            clockOne.Background.Opacity = 25;
-        }
-
         private void clockOne_Click(object sender, RoutedEventArgs e)
         {
             VM.InsertClock("One", this);

@@ -17,7 +17,7 @@ namespace RockySportsView.ViewModel
             configuration.Save();
 
             MainWindow main = new MainWindow();
-            main.Show();
+            main.Activate();
             hide.Close();
 
         }

@@ -29,6 +29,8 @@ namespace RockyClasses
             //[rogress bar
             //check if its .xls > if not > message ! > or not giving the option to choose this file
             //all the checkups that cant press if they didnt choose from list / etc ....
+
+            //CHECK THE THING ABOUT NOT BEING ABLE AFTER CHOOSE CLOCK
         }
     }
 }

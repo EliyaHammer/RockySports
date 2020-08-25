@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ChooseClockView" Height="450" Width="800">
     <Grid Cursor="None" Background="#FFC0E2F0">
-        <Button Name="clockOne" Content="Clock One" HorizontalAlignment="Left" Height="105" Margin="84,205,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" MouseEnter="clockOne_MouseEnter" FontWeight="Bold" ClipToBounds="True" Click="clockOne_Click">
+        <Button Name="clockOne" Content="Clock One" HorizontalAlignment="Left" Height="105" Margin="84,205,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" FontWeight="Bold" ClipToBounds="True" Click="clockOne_Click">
             <Button.Background>
                 <SolidColorBrush Color="#FF9BCBDC" Opacity="0.5"/>
             </Button.Background>
@@ -22,7 +22,7 @@
             </Button.OpacityMask>
         </Button>
         <Label Content="בחר את שעונך" Height="88" Margin="167,45,0,0" Width="422" FontSize="48" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold"/>
-        <Button x:Name="clockTwo" Content="Clock Two" HorizontalAlignment="Left" Height="105" Margin="316,205,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" MouseEnter="clockOne_MouseEnter" FontWeight="Bold" ClipToBounds="True" Click="clockTwo_Click">
+        <Button x:Name="clockTwo" Content="Clock Two" HorizontalAlignment="Left" Height="105" Margin="316,205,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" FontWeight="Bold" ClipToBounds="True" Click="clockTwo_Click">
             <Button.Background>
                 <SolidColorBrush Color="#FF9BCBDC" Opacity="0.5"/>
             </Button.Background>
@@ -36,7 +36,7 @@
                 </LinearGradientBrush>
             </Button.OpacityMask>
         </Button>
-        <Button x:Name="clockThree" Content="Clock Three" HorizontalAlignment="Left" Height="105" Margin="554,205,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" MouseEnter="clockOne_MouseEnter" FontWeight="Bold" ClipToBounds="True" Click="clockThree_Click">
+        <Button x:Name="clockThree" Content="Clock Three" HorizontalAlignment="Left" Height="105" Margin="554,205,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" FontWeight="Bold" ClipToBounds="True" Click="clockThree_Click">
             <Button.Background>
                 <SolidColorBrush Color="#FF9BCBDC" Opacity="0.5"/>
             </Button.Background>
