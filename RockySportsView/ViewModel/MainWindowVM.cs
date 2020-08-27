@@ -6,7 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -36,6 +40,8 @@ namespace RockySportsView.ViewModel
             }
             //here check if the sql exists, if not > create !
             //else > check the type > make a user interface.
+
+            DefineDates();
         }
         private UserInterface Interface { get; set; }
 
@@ -68,6 +74,127 @@ namespace RockySportsView.ViewModel
             }
         }
 
+        private int[] months;
+        public int[] Months
+        {
+            get
+            {
+                return months;
+            }
+
+            set
+            {
+                months = value;
+                OnPropertyChanged("Months");
+            }
+        }
+
+        private int[] years;
+        public int[] Years
+        {
+            get
+            {
+                return years;
+            }
+
+            set
+            {
+                years = value;
+                OnPropertyChanged("Years");
+            }
+        }
+        private List<string> names;
+        public List<string> Names
+        {
+            get
+            {
+                return names;
+            }
+
+            set
+            {
+                names = value;
+                OnPropertyChanged("Names");
+            }
+        }
+
+        private int selectedYear;
+        public int SelectedYear
+        {
+            get
+            {
+                return selectedYear;
+            }
+
+            set
+            {
+                selectedYear = value;
+                OnPropertyChanged("SelectedYear");
+                DefineEmpList();
+            }
+        }
+
+        private int selectedMonth;
+        public int SelectedMonth
+        {
+            get
+            {
+                return selectedMonth;
+            }
+
+            set
+            {
+                selectedMonth = value;
+                OnPropertyChanged("SelectedMonth");
+                DefineEmpList();
+            }
+        }
+
+        private bool isRadiosEnabled;
+        public bool IsRadiosEnabled
+        {
+            get
+            {
+                return isRadiosEnabled;
+            }
+
+            set
+            {
+                isRadiosEnabled = value;
+                OnPropertyChanged("IsRadiosEnabled");
+            }
+        }
+
+        private bool isButtonEnabledAllEmp;
+        public bool IsButtonEnabledAllEmp
+        {
+            get { return isButtonEnabledAllEmp; }
+            set
+            {
+                isButtonEnabledAllEmp = value;
+                OnPropertyChanged("IsButtonEnabledAllEmp");
+            }
+        }
+
+        private bool isListEnabled;
+        public bool IsListEnabled
+        {
+            get { return isListEnabled; }
+            set
+            {
+                isListEnabled = value;
+                OnPropertyChanged("IsListEnabled");
+            }
+        }
+
+        private string selectedEmp;
+        public string SelectedEmp
+        {
+            get { return selectedEmp; }
+            set {
+                selectedEmp = value;
+            }
+        }
         //here make a variable for emp names 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -114,19 +241,44 @@ namespace RockySportsView.ViewModel
             //here stop the dots
 
         }
-        private void DefineEmpList (int month = 0, int year = 0)
+        private void DefineDates ()
         {
-            //this is already for choosing by times.
-            if (month == 0 || year == 0)
+            years = new int[2] { Convert.ToInt32(DateTime.Now.Year), Convert.ToInt32(DateTime.Now.Year) - 1};
+            months = new int[12] { 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12 };
+        }
+        private void DefineEmpList ()
+        {
+            if (SelectedMonth != 0 && SelectedYear != 0)
             {
-            }
+                List<string> tempNames = new List<string>();
 
-            else
-            {
+                Employee[] logs = Interface.GetAllMonthAndYeah(SelectedMonth, SelectedYear);
+                string currentName = null;
 
+                if (logs.Length > 0)
+                {
+                    currentName = logs[0].Name;
+                }
+
+
+                for (int i = 0; i < logs.Length; i++)
+                {
+                    if (currentName != logs[i].Name)
+                    {
+                        tempNames.Add(currentName);
+                        currentName = logs[i].Name;
+                    }
+
+                    if (i == logs.Length - 1)
+                    {
+                        tempNames.Add(currentName);
+                    }
+                }
+
+                Names = tempNames;
+                IsRadiosEnabled = true;
             }
         }
-
 
     }
 }

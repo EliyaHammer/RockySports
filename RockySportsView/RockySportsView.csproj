@@ -88,6 +88,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\LogsForEmpView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,9 +102,13 @@
     </Compile>
     <Compile Include="Converters\TextToEnableConverter.cs" />
     <Compile Include="ViewModel\ChooseClockVM.cs" />
+    <Compile Include="ViewModel\LogsForEmpVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="View\ChooseClockView.xaml.cs">
       <DependentUpon>ChooseClockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogsForEmpView.xaml.cs">
+      <DependentUpon>LogsForEmpView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
