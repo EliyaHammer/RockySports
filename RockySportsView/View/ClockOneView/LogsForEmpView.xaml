@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RockySportsView.View"
+        xmlns:local2="clr-namespace:RockySportsView.Converters"
         mc:Ignorable="d"
         Title="LogsForEmpView" Height="489.577" Width="868.893">
+    <Window.Resources>
+        <local2:AbsenceConverter x:Key="Absence"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="110*"/>
@@ -17,26 +21,34 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid Cursor="Arrow" Background="#FFC0E2F0" Grid.ColumnSpan="7">
-            <DataGrid x:Name="LogsView" ItemsSource="{Binding Path=emp.logs}" HorizontalAlignment="Left" Height="372" Margin="27,73,0,0" VerticalAlignment="Top" Width="817" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" CanUserReorderColumns="False" CanUserSortColumns="False" HorizontalScrollBarVisibility="Visible" SelectionChanged="LogsView_SelectionChanged" FontFamily="Calibri" ColumnWidth="SizeToHeader" FontSize="15">
+            <DataGrid x:Name="LogsView" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="376" Margin="168,71,0,0" VerticalAlignment="Top" Width="681" FlowDirection="RightToLeft" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" CanUserReorderColumns="False" CanUserSortColumns="False" HorizontalScrollBarVisibility="Visible" FontFamily="Calibri" ColumnWidth="SizeToHeader" FontSize="15">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="תאריך" IsReadOnly="True" Binding="{Binding Path=emp.Logs.Date, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Header="כניסה ראשונה"/>
-                    <DataGridTextColumn Header="יציאה ראשונה"/>
-                    <DataGridTextColumn Header="כניסה שנייה"/>
-                    <DataGridTextColumn Header="יציאה שנייה"/>
+                    <DataGridTextColumn Header="תאריך" Binding="{Binding Date}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="כניסה ראשונה" Binding="{Binding ChecksInOne}"/>
+                    <DataGridTextColumn Header="יציאה ראשונה" Binding="{Binding ChecksOutOne}"/>
+                    <DataGridTextColumn Header="כניסה שנייה" Binding="{Binding ChecksInTwo}"/>
+                    <DataGridTextColumn Header="יציאה שנייה" Binding="{Binding ChecksOutTwo}"/>
+                    <DataGridTextColumn Header="דקות איחור" Binding="{Binding MinutesLate}"/>
+                    <DataGridTextColumn Header="דקות עזיבה מוקדמת" Binding="{Binding MinutesEarlyLeave}"/>
                     <DataGridTextColumn Header="%100"/>
                     <DataGridTextColumn Header="%125"/>
                     <DataGridTextColumn Header="%150"/>
-                    <DataGridTextColumn Header="סה''כ שעות"/>
-                    <DataGridTextColumn Header="דקות איחור "/>
-                    <DataGridTextColumn Header="דקות יציאה מוקדמת"/>
-                    <DataGridTextColumn Header="נעדר"/>
+                    <DataGridTextColumn Header="האם נעדר" IsReadOnly="True" Binding="{Binding IsAbsance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource Absence}}"/>
+                    <DataGridTextColumn Header="האם שונה ידנית" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Label Content=":דו''ח לעובד" Height="32" Margin="747,20,0,0" Width="97" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
             <Label Name="EmpName" Content="{Binding Path=EmpName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Height="32" Margin="650,20,0,0" Width="97" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
             <Label Content=":לתקופה" Height="32" Margin="517,20,0,0" Width="106" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
             <Label Name="MonthAndYear" Content="{Binding Path=MonthAndYear, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Height="32" Margin="412,20,0,0" Width="105" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
+            <Label Content=":סה&quot;כ שעות" HorizontalAlignment="Left" Height="37" Margin="92,121,0,0" VerticalAlignment="Top" Width="78" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <Label Content=":סה&quot;כ היעדרויות" HorizontalAlignment="Left" Height="37" Margin="71,163,0,0" VerticalAlignment="Top" Width="97" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <Label Content=":סה&quot;כ דקות איחור" HorizontalAlignment="Left" Height="37" Margin="62,209,0,0" VerticalAlignment="Top" Width="110" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <Label Content=":סה&quot;כ עזיבה מוקדמת" HorizontalAlignment="Left" Height="37" Margin="46,252,0,0" VerticalAlignment="Top" Width="124" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <Label Content="" HorizontalAlignment="Left" Height="37" Margin="12,121,0,0" VerticalAlignment="Top" Width="44" FontFamily="Calibri" FontSize="14"/>
+            <Label Content="{Binding Emp.TotalAbsence}" HorizontalAlignment="Left" Height="37" Margin="12,163,0,0" VerticalAlignment="Top" Width="44" FontFamily="Calibri" FontSize="14"/>
+            <Label Content="{Binding Emp.TotalMinutesLate}" HorizontalAlignment="Left" Height="37" Margin="12,209,0,0" VerticalAlignment="Top" Width="44" FontFamily="Calibri" FontSize="14"/>
+            <Label Content="{Binding Emp.TotalEarlyLeave}" HorizontalAlignment="Left" Height="37" Margin="12,252,0,0" VerticalAlignment="Top" Width="44" FontFamily="Calibri" FontSize="14"/>
         </Grid>
         <Button x:Name="BackButton" Content="חזור&#xA;" HorizontalAlignment="Left" Height="29" Margin="26,24,0,0" VerticalAlignment="Top" Width="122" BorderBrush="Black" FontSize="16" Cursor="Hand" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" 
             HorizontalContentAlignment="Center" FontWeight="Medium" Grid.ColumnSpan="2" Click="BackButton_Click">
@@ -52,6 +64,18 @@
         </Button>
         <Button x:Name="ImportButton_Copy" Content="...ייצא קובץ&#xA;" HorizontalAlignment="Left" Height="29" Margin="84,24,0,0" VerticalAlignment="Top" Width="122" BorderBrush="Black" FontSize="16" Cursor="Hand" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" 
             HorizontalContentAlignment="Center" FontWeight="Medium" Grid.Column="1">
+            <Button.Background>
+                <SolidColorBrush Color="#FF83A8B6" Opacity="0.5"/>
+            </Button.Background>
+            <Button.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.OpacityMask>
+        </Button>
+        <Button x:Name="SaveChangesButton" Content="שמור שינויים&#xA;" HorizontalAlignment="Left" Height="58" Margin="26,391,0,0" VerticalAlignment="Top" Width="122" BorderBrush="Black" FontSize="16" Cursor="Hand" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" 
+            HorizontalContentAlignment="Center" FontWeight="Medium" Grid.ColumnSpan="2" RenderTransformOrigin="0.434,0.628" Padding="1,15,1,1">
             <Button.Background>
                 <SolidColorBrush Color="#FF83A8B6" Opacity="0.5"/>
             </Button.Background>

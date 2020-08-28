@@ -100,6 +100,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\AbsenceConverter.cs" />
     <Compile Include="Converters\TextToEnableConverter.cs" />
     <Compile Include="ViewModel\ChooseClockVM.cs" />
     <Compile Include="ViewModel\ClockOneVM\LogsForEmpVM.cs" />

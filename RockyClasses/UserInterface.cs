@@ -47,9 +47,9 @@ namespace RockyClasses
             return true;
         }
 
-        public bool UpdateLog(Employee oldLog, Employee newLog)
+        public bool UpdateLog(Employee newLog)
         {
-            return Clock.UpdateLog(oldLog, newLog);
+            return Clock.UpdateLog(newLog);
         }
 
         public LogsHolder GetLogsByEmpName(string name)

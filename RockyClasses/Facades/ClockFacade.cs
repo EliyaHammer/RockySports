@@ -32,9 +32,9 @@ namespace RockyClasses.Facades
             MyClock.StartOperation(logLocation);
         }
 
-        public bool UpdateLog (Employee oldLog, Employee newLog)
+        public bool UpdateLog (Employee newLog)
         {
-            return MyClock.Update(oldLog, newLog);
+            return MyClock.Update(newLog);
         }
 
         public LogsHolder GetLogsByEmpName(string name)

@@ -27,6 +27,7 @@ namespace RockySportsView.View
             InitializeComponent();
             VM = new LogsForEmpVM(empLogs);
             this.DataContext = VM;
+            LogsView.ItemsSource = VM.Emp.logs.ToList();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

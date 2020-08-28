@@ -65,11 +65,14 @@ namespace RockyClasses.DAL
             Employee[] logs = TakeData(logLocation);
             PutInDB(logs);
         }
-        public bool Update (Employee oldLog, Employee newLog)
+        public bool Update (Employee newLog)
         {
             using (Model1 entity = new Model1())
             {
-                Employee found = entity.Employees.Find(oldLog);
+                Employee found =
+                    (Employee)from emp in entity.Employees
+                    where emp.Date == newLog.Date && emp.ID == newLog.ID
+                    select emp;
 
                 if (found != null)
                 {
