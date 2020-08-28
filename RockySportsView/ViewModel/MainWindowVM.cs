@@ -43,7 +43,7 @@ namespace RockySportsView.ViewModel
 
             DefineDates();
         }
-        private UserInterface Interface { get; set; }
+        public UserInterface Interface { get; set; }
 
         private string isSucceeded;
         public string IsSucceeded { 

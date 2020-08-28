@@ -88,7 +88,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LogsForEmpView.xaml">
+    <Page Include="View\ClockOneView\LogsForEmpView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,12 +102,12 @@
     </Compile>
     <Compile Include="Converters\TextToEnableConverter.cs" />
     <Compile Include="ViewModel\ChooseClockVM.cs" />
-    <Compile Include="ViewModel\LogsForEmpVM.cs" />
+    <Compile Include="ViewModel\ClockOneVM\LogsForEmpVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="View\ChooseClockView.xaml.cs">
       <DependentUpon>ChooseClockView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LogsForEmpView.xaml.cs">
+    <Compile Include="View\ClockOneView\LogsForEmpView.xaml.cs">
       <DependentUpon>LogsForEmpView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
@@ -148,6 +148,7 @@
       <Name>RockyClasses</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

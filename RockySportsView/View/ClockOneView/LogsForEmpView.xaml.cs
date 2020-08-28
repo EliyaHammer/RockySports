@@ -28,5 +28,12 @@ namespace RockySportsView.View
             VM = new LogsForEmpVM(empLogs);
             this.DataContext = VM;
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
     }
 }

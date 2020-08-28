@@ -40,5 +40,12 @@ namespace RockySportsView
         {
             viewModel.Import();         
         }
+
+        private void ShowByEmpButton_Click(object sender, RoutedEventArgs e)
+        {
+            LogsForEmpView logsView = new LogsForEmpView(viewModel.Interface.GetByEmpMonthYear(viewModel.SelectedMonth, viewModel.SelectedYear, viewModel.SelectedEmp));
+            logsView.Show();
+            this.Close();
+        }
     }
 }
