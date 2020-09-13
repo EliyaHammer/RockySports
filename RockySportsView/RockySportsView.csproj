@@ -66,6 +66,7 @@
     </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -84,7 +85,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\AllEditRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ChooseClockView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ClockOneView\AllLogsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ClockOneView\EditRowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,11 +115,22 @@
     </Compile>
     <Compile Include="Converters\AbsenceConverter.cs" />
     <Compile Include="Converters\TextToEnableConverter.cs" />
+    <Compile Include="ViewModel\AllLogsVM.cs" />
     <Compile Include="ViewModel\ChooseClockVM.cs" />
+    <Compile Include="ViewModel\ClockOneVM\EditRowVM.cs" />
     <Compile Include="ViewModel\ClockOneVM\LogsForEmpVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
+    <Compile Include="View\AllEditRow.xaml.cs">
+      <DependentUpon>AllEditRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ChooseClockView.xaml.cs">
       <DependentUpon>ChooseClockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClockOneView\AllLogsView.xaml.cs">
+      <DependentUpon>AllLogsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClockOneView\EditRowView.xaml.cs">
+      <DependentUpon>EditRowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ClockOneView\LogsForEmpView.xaml.cs">
       <DependentUpon>LogsForEmpView.xaml</DependentUpon>

@@ -1,10 +1,8 @@
 ﻿using RockyClasses;
 using RockyClasses.POCO;
-using RockySportsView.View.ClockOneView;
 using RockySportsView.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,20 +15,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace RockySportsView.View
+namespace RockySportsView.View.ClockOneView
 {
     /// <summary>
-    /// Interaction logic for LogsForEmpView.xaml
+    /// Interaction logic for AllLogsView.xaml
     /// </summary>
-    public partial class LogsForEmpView : Window
+    public partial class AllLogsView : Window
     {
-        public LogsForEmpVM VM { get; private set; }
+        public AllLogsVM VM { get; private set; }
         public UserInterface inter { get; set; }
-        public LogsForEmpView(LogsHolder empLogs, UserInterface inter)
+        public AllLogsView(Employee[] logs, UserInterface inter)
         {
             InitializeComponent();
             this.inter = inter;
-            VM = new LogsForEmpVM(empLogs, inter);
+            VM = new AllLogsVM(logs, inter);
             this.DataContext = VM;
             LogsView.ItemsSource = VM.Logs.ToList();
         }
@@ -44,8 +42,8 @@ namespace RockySportsView.View
 
         private void EditRow_Click(object sender, RoutedEventArgs e)
         {
-            EditRowView edit = new EditRowView((Employee)LogsView.SelectedItem, this, inter) ;
-            edit.ShowDialog();
+          //  EditRowView edit = new EditRowView((Employee)LogsView.SelectedItem, this, inter);
+           // edit.ShowDialog();
         }
     }
 }

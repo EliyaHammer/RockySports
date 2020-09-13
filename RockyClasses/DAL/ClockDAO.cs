@@ -17,45 +17,6 @@ namespace RockyClasses.DAL
         {
             using (Model1 entity = new Model1())
             {
-                foreach (Employee e in logs)
-                {
-                    Employee fourIDRaw =
-                        (from log in entity.Employees
-                        where log.ID == e.ID
-                        select log) as Employee;
-
-                    if (fourIDRaw != null)
-                    {
-                        e.FourDigitID = fourIDRaw.FourDigitID;
-
-                        if (e.FourDigitID == 0)
-                        {
-                            int[] digits = new int[4];
-
-                            for (int i  = 0; i < 4; i++)
-                            {
-                                Random r = new Random();
-                                digits[i] = r.Next();
-
-                                if (i == 3)
-                                {
-                                    foreach (Employee x in entity.Employees)
-                                    {
-                                        if (x.FourDigitID == Convert.ToInt32(digits))
-                                        {
-                                            i = 0;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-
-                            e.FourDigitID = Convert.ToInt32(digits);
-                        }
-                    }
-
-                }
-
                     entity.Employees.AddRange(logs);
                     entity.SaveChanges();
             }
@@ -69,18 +30,50 @@ namespace RockyClasses.DAL
         {
             using (Model1 entity = new Model1())
             {
-                Employee found =
-                    (Employee)from emp in entity.Employees
-                    where emp.Date == newLog.Date && emp.ID == newLog.ID
-                    select emp;
+                DateTime date = new DateTime(newLog.Date.Year, newLog.Date.Month, newLog.Date.Day);
+
+                Employee found = null;
+
+                for (int i = 0; i < entity.Employees.Count(); i++)
+                {
+                    if (entity.Employees.ToArray()[i].Date == date && entity.Employees.ToArray()[i].ID == newLog.ID)
+                    {
+                        found = entity.Employees.ToArray()[i];
+                        break;
+                    }
+                }
+
 
                 if (found != null)
                 {
-                    found = newLog;
+                    for (int i = 0; i < entity.Employees.Count(); i++)
+                    {
+                        if (entity.Employees.ToArray()[i] == found)
+                        {
+                            entity.Employees.ToArray()[i] = newLog;
+                            entity.SaveChanges();
+                            break;
+                        }
+                    }
+
+                    return true;
+                }
+             /*   foreach (Employee e in entity.Employees)
+                {
+                    if (e.Date == date && e.ID == newLog.ID)
+                    {
+                        found = e;
+                        break;
+                    }
+                }
+
+                if (found != null)
+                {
+                    entity.Employees.ToList().ForEach((e) => { if (e == found) { e = newLog; } });
                     entity.SaveChanges();
                     return true;
                 }
-
+                */
                 return false;
 
             }

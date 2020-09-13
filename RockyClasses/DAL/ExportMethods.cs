@@ -27,6 +27,30 @@ namespace RockyClasses.DAL
                 TimeSpan zero = new TimeSpan(0, 0, 0);
                 string inOUT = null;
 
+                char[] fourDigit = new char[4];
+
+                if (Convert.ToString(logs[i].ID).Length > 4)
+                {
+                    for (int x = 0; x < 4; x++)
+                    {
+                        fourDigit[i] = Convert.ToString(logs[i].ID)[i];
+                    }
+                }
+                else
+                {
+                    for (int n = 0; n < Convert.ToString(logs[i].ID).Length; n++)
+                    {
+                        fourDigit[i] = Convert.ToString(logs[i].ID)[i];
+                    }
+
+                    for (int f = (4 - Convert.ToString(logs[i].ID).Length); f < 4; f++)
+                    {
+                        fourDigit[i] = Convert.ToString(logs[i].ID)[i];
+                    }
+                }
+
+
+
                 for (int j = 0; j < 4; j++)
                 {
                     if (checkings[0] != zero)
@@ -38,7 +62,7 @@ namespace RockyClasses.DAL
                             inOUT = "OT";
 
                         oneRow =
-                             $"01     {logs[i].FourDigitID} {logs[i].Date.Day}/{logs[i].Date.Month}/{logs[i].Date.Year} {currentTime.Hours}:{currentTime.Minutes} {inOUT} 0000000000 0000";
+                             $"01     {fourDigit} {logs[i].Date.Day}/{logs[i].Date.Month}/{logs[i].Date.Year} {currentTime.Hours}:{currentTime.Minutes} {inOUT} 0000000000 0000";
                        
                         allRows.Add(oneRow);
                     }

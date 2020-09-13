@@ -26,6 +26,13 @@ namespace RockyClasses.DAL
                      orderby Employee.Date ascending
                      select Employee).ToList();
 
+                foreach (Employee log in logs)
+                {
+                    log.CalculateIsError();
+                    if (log.IsManuallyChanged == null)
+                        log.IsManuallyChanged = 0;
+                }
+
                 result = new LogsHolder(logs.ToArray());
                 result.CalculateAll();
             }
@@ -44,6 +51,13 @@ namespace RockyClasses.DAL
                      where Employee.Date.Month == month && Employee.Date.Year == year
                      orderby Employee.Name
                      select Employee).ToList();
+
+                foreach (Employee log in logs)
+                {
+                    log.CalculateIsError();
+                    if (log.IsManuallyChanged == null)
+                        log.IsManuallyChanged = 0;
+                }
             }
 
             return logs.ToArray();
@@ -64,7 +78,14 @@ namespace RockyClasses.DAL
                             newLogs.Add(logs[i]);
                     }
 
-                    result = new LogsHolder(newLogs.ToArray());
+
+                foreach (Employee log in logs)
+                {
+                    log.CalculateIsError();
+                    if (log.IsManuallyChanged == null)
+                        log.IsManuallyChanged = 0;
+                }
+                result = new LogsHolder(newLogs.ToArray());
                     result.CalculateAll();
             }
 

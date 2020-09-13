@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using RockyClasses;
 using RockySportsView.View;
+using RockySportsView.View.ClockOneView;
 using RockySportsView.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -43,8 +44,15 @@ namespace RockySportsView
 
         private void ShowByEmpButton_Click(object sender, RoutedEventArgs e)
         {
-            LogsForEmpView logsView = new LogsForEmpView(viewModel.Interface.GetByEmpMonthYear(viewModel.SelectedMonth, viewModel.SelectedYear, viewModel.SelectedEmp));
+            LogsForEmpView logsView = new LogsForEmpView(viewModel.Interface.GetByEmpMonthYear(viewModel.SelectedMonth, viewModel.SelectedYear, viewModel.SelectedEmp), viewModel.Interface);
             logsView.Show();
+            this.Close();
+        }
+
+        private void ShowAllWorkers_Click(object sender, RoutedEventArgs e)
+        {
+            AllLogsView allView = new AllLogsView(viewModel.Interface.GetAllMonthAndYeah(viewModel.SelectedMonth, viewModel.SelectedYear), viewModel.Interface);
+            allView.Show();
             this.Close();
         }
     }

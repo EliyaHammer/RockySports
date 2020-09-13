@@ -45,9 +45,45 @@ namespace RockyClasses
 
         public virtual DaysOfWeek DaysOfWeek { get; set; }
 
-        public int FourDigitID { get; set; }
+        public int? IsError { get; set; }
 
+        public int? IsManuallyChanged { get; set; }
 
+        public void CalculateIsError ()
+        {
+            TimeSpan zero = new TimeSpan(0, 0, 0);
+            IsError = 0;
+
+            if ((IsAbsance == 0) && (ChecksInOne != zero || ChecksInTwo != zero || ChecksOutOne != zero || ChecksOutTwo != zero))
+            {
+                if (ChecksInOne != zero)
+                {
+                    if ((ChecksOutOne == zero && ChecksInTwo != zero) || (ChecksOutOne == zero && ChecksOutTwo == zero))
+                        IsError = 1;
+                }
+
+                if (ChecksInTwo != zero)
+                {
+                    if (ChecksOutTwo == zero)
+                        IsError = 1;
+                }
+
+                if (ChecksInOne == zero && ChecksOutOne != zero)
+                    IsError = 1;
+
+                if (ChecksInOne == zero && ChecksInTwo == zero && ChecksOutTwo != zero)
+                    IsError = 1;
+            }
+        }
+
+        public void CalculateIsAbsence ()
+        {
+            TimeSpan zero = new TimeSpan(0, 0, 0);
+            if (ChecksInOne != zero || ChecksInTwo != zero || ChecksOutOne != zero || ChecksOutTwo != zero)
+                IsAbsance = 0;
+            else
+                IsAbsance = 1;
+        }
 
     }
 }

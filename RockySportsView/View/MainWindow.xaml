@@ -25,7 +25,7 @@
                     </LinearGradientBrush>
                 </Button.OpacityMask>
             </Button>
-            <Button x:Name="ShowAllWorkers" Content="הצג&#xA;" HorizontalAlignment="Left" Height="24" Margin="218,339,0,0" VerticalAlignment="Top" Width="47" BorderBrush="Black" FontSize="16" Cursor="Hand" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Medium" IsEnabled="{Binding ElementName=AllEmpsRadio, Mode=OneWay, Path=IsChecked}">
+            <Button x:Name="ShowAllWorkers" Content="הצג&#xA;" HorizontalAlignment="Left" Height="24" Margin="218,339,0,0" VerticalAlignment="Top" Width="47" BorderBrush="Black" FontSize="16" Cursor="Hand" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Medium" IsEnabled="{Binding ElementName=AllEmpsRadio, Mode=OneWay, Path=IsChecked}" Click="ShowAllWorkers_Click">
                 <Button.Background>
                     <SolidColorBrush Color="#FF83A8B6" Opacity="0.5"/>
                 </Button.Background>
@@ -36,7 +36,7 @@
                     </LinearGradientBrush>
                 </Button.OpacityMask>
             </Button>
-            <Button x:Name="ImportButton" Content="...בחר קובץ&#xA;" HorizontalAlignment="Left" Height="29" Margin="332,98,0,0" VerticalAlignment="Top" Width="122" BorderBrush="Black" FontSize="16" Cursor="Hand" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" 
+            <Button x:Name="ImportButton" Content="...בחר קובץ&#xA;" HorizontalAlignment="Left" Height="29" Margin="332,105,0,0" VerticalAlignment="Top" Width="122" BorderBrush="Black" FontSize="16" Cursor="Hand" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" 
                     HorizontalContentAlignment="Center" FontWeight="Medium" IsEnabled="{Binding Path=IsEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Click="ImportButton_Click">
                 <Button.Background>
                     <SolidColorBrush Color="#FF83A8B6" Opacity="0.5"/>
@@ -52,8 +52,8 @@
             <ComboBox x:Name="yearChoose"  HorizontalAlignment="Left" Height="24" Margin="396,242,0,0" VerticalAlignment="Top" Width="86" BorderBrush="White" Background="White" ItemsSource="{Binding Path=Years, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedYear, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
             <ComboBox x:Name="monthChoose"  HorizontalAlignment="Left" Height="24" Margin="287,242,0,0" VerticalAlignment="Top" Width="86" BorderBrush="White" Background="White" ItemsSource="{Binding Path=Months, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedMonth, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
-        <Label Content="ייבא דו''ח" Height="45" Margin="335,39,0,0" Width="116" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
-        <Label Content="הצג דו''ח" Height="45" Margin="335,175,0,0" Width="116" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
+        <Label Content="ייבוא דו''ח" Height="45" Margin="335,39,0,0" Width="116" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
+        <Label Content="הצגת דו''ח" Height="45" Margin="335,175,0,0" Width="116" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
         <Label Content="בחר תקופה" Height="37" Margin="500,234,0,0" Width="97" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
     </Grid>
 </Window>
