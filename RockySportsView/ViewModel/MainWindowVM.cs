@@ -22,26 +22,34 @@ namespace RockySportsView.ViewModel
     {
         public MainWindowVM(Window hide)
         {
-            if (ConfigurationManager.AppSettings["ClockType"] == "")
+            try
             {
-                ChooseClock(hide);
-            }
-            else if (ConfigurationManager.AppSettings["ClockType"] == "One")
-            {
-                Interface = new UserInterface(ClocksEnum.ClockOne);
-            }
-            else if (ConfigurationManager.AppSettings["ClockType"] == "Two")
-            {
-                Interface = new UserInterface(ClocksEnum.ClockTwo);
-            }
-            else if (ConfigurationManager.AppSettings["ClockType"] == "Three")
-            {
-                Interface = new UserInterface(ClocksEnum.ClockThree);
-            }
-            //here check if the sql exists, if not > create !
-            //else > check the type > make a user interface.
+                if (ConfigurationManager.AppSettings["ClockType"] == "")
+                {
+                    ChooseClock(hide);
+                }
+                else if (ConfigurationManager.AppSettings["ClockType"] == "One")
+                {
+                    Interface = new UserInterface(ClocksEnum.ClockOne);
+                }
+                else if (ConfigurationManager.AppSettings["ClockType"] == "Two")
+                {
+                    Interface = new UserInterface(ClocksEnum.ClockTwo);
+                }
+                else if (ConfigurationManager.AppSettings["ClockType"] == "Three")
+                {
+                    Interface = new UserInterface(ClocksEnum.ClockThree);
+                }
+                //here check if the sql exists, if not > create !
+                //else > check the type > make a user interface.
 
-            DefineDates();
+                DefineDates();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
         public UserInterface Interface { get; set; }
 
@@ -208,75 +216,104 @@ namespace RockySportsView.ViewModel
         }
         public void ChooseClock (Window hide)
         {
-            ChooseClockView clock = new ChooseClockView();
-            clock.Show();
-            hide.Close();
+            try
+            {
+                ChooseClockView clock = new ChooseClockView();
+                clock.Show();
+                hide.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
         public void Import ()
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "(.xls)|*.xls";
-            openFile.ShowDialog();
-            FilePath = openFile.FileName;
-
-            bool succeeded = false;
-
-            Task import = new Task(() =>
+            try
             {
-                succeeded = Interface.Import(FilePath);
-            });
+                OpenFileDialog openFile = new OpenFileDialog();
+                openFile.Filter = "(.xls)|*.xls";
+                openFile.ShowDialog();
+                FilePath = openFile.FileName;
 
-            IsSucceeded = "";
-            import.Start();
-            isEnabled = false;
-            //here show the dots or whatever- use is completed
-            import.Wait();
+                bool succeeded = false;
 
-            if (succeeded == true)
-                IsSucceeded = "ייבוא בוצע בהצלחה";
-            else
-                IsSucceeded = "הייבוא נכשל";
+                Task import = new Task(() =>
+                {
+                    succeeded = Interface.Import(FilePath);
+                });
 
-            isEnabled = true;
-            //here stop the dots
+                IsSucceeded = "";
+                import.Start();
+                isEnabled = false;
+
+                import.Wait();
+
+                if (succeeded == true)
+                    IsSucceeded = "ייבוא בוצע בהצלחה";
+                else
+                    IsSucceeded = "הייבוא נכשל";
+
+                isEnabled = true;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
 
         }
         private void DefineDates ()
         {
-            years = new int[2] { Convert.ToInt32(DateTime.Now.Year), Convert.ToInt32(DateTime.Now.Year) - 1};
-            months = new int[12] { 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12 };
+            try
+            {
+                years = new int[2] { Convert.ToInt32(DateTime.Now.Year), Convert.ToInt32(DateTime.Now.Year) - 1 };
+                months = new int[12] { 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12 };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
         private void DefineEmpList ()
         {
-            if (SelectedMonth != 0 && SelectedYear != 0)
+            try
             {
-                List<string> tempNames = new List<string>();
-
-                Employee[] logs = Interface.GetAllMonthAndYeah(SelectedMonth, SelectedYear);
-                string currentName = null;
-
-                if (logs.Length > 0)
+                if (SelectedMonth != 0 && SelectedYear != 0)
                 {
-                    currentName = logs[0].Name;
-                }
+                    List<string> tempNames = new List<string>();
 
+                    Employee[] logs = Interface.GetAllMonthAndYeah(SelectedMonth, SelectedYear);
+                    string currentName = null;
 
-                for (int i = 0; i < logs.Length; i++)
-                {
-                    if (currentName != logs[i].Name)
+                    if (logs.Length > 0)
                     {
-                        tempNames.Add(currentName);
-                        currentName = logs[i].Name;
+                        currentName = logs[0].Name;
                     }
 
-                    if (i == logs.Length - 1)
-                    {
-                        tempNames.Add(currentName);
-                    }
-                }
 
-                Names = tempNames;
-                IsRadiosEnabled = true;
+                    for (int i = 0; i < logs.Length; i++)
+                    {
+                        if (currentName != logs[i].Name)
+                        {
+                            tempNames.Add(currentName);
+                            currentName = logs[i].Name;
+                        }
+
+                        if (i == logs.Length - 1)
+                        {
+                            tempNames.Add(currentName);
+                        }
+                    }
+
+                    Names = tempNames;
+                    IsRadiosEnabled = true;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
             }
         }
 

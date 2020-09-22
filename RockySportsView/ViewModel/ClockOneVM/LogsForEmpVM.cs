@@ -15,13 +15,21 @@ namespace RockySportsView.ViewModel
     {
         public LogsForEmpVM(LogsHolder empLogs, UserInterface inter)
         {
-            this.Emp = empLogs;
-            EmpName = Emp.logs[0].Name;
-            string month = Emp.logs[0].Date.Month.ToString();
-            string year = Emp.logs[0].Date.Year.ToString();
-            MonthAndYear = $"{month}/{year}";
+            try
+            {
+                this.Emp = empLogs;
+                EmpName = Emp.logs[0].Name;
+                string month = Emp.logs[0].Date.Month.ToString();
+                string year = Emp.logs[0].Date.Year.ToString();
+                MonthAndYear = $"{month}/{year}";
 
-            this.Logs = emp.logs;
+                this.Logs = emp.logs;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
 
         private LogsHolder emp;

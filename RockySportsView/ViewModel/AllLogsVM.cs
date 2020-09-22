@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace RockySportsView.ViewModel
 {
@@ -18,10 +19,19 @@ namespace RockySportsView.ViewModel
         public Employee SelectedRow { get; set; }
         public AllLogsVM (Employee[] logs, UserInterface inter)
         {
-            this.Logs = logs;
-            string month = Logs[0].Date.Month.ToString();
-            string year = Logs[0].Date.Year.ToString();
-            MonthAndYear = $"{month}/{year}";
+            try
+            {
+                this.Logs = logs;
+                string month = Logs[0].Date.Month.ToString();
+                string year = Logs[0].Date.Year.ToString();
+                MonthAndYear = $"{month}/{year}";
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
+
         }
 
         private void OnPropertyChanged (string name)
@@ -33,3 +43,4 @@ namespace RockySportsView.ViewModel
         }
     }
 }
+

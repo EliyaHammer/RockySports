@@ -1,10 +1,7 @@
 ﻿using RockyClasses;
-using RockyClasses.POCO;
-using RockySportsView.ViewModel;
 using RockySportsView.ViewModel.ClockOneVM;
 using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,28 +17,28 @@ using System.Windows.Shapes;
 namespace RockySportsView.View.ClockOneView
 {
     /// <summary>
-    /// Interaction logic for EditRowView.xaml
+    /// Interaction logic for AllLogsEditRowView.xaml
     /// </summary>
-    public partial class EditRowView : Window
+    public partial class AllLogsEditRowView : Window
     {
-        private EditRowVM VM { get; set; }
-        private LogsForEmpView windowBack { get; set; }
-        public EditRowView(Employee row, LogsForEmpView windowBack, UserInterface inter)
+        private AllLogsEditRowVM VM { get; set; }
+        private AllLogsView windowBack { get; set; }
+        public AllLogsEditRowView(Employee selectedRow, AllLogsView windowBack, UserInterface inter)
         {
             try
             {
                 this.windowBack = windowBack;
 
                 InitializeComponent();
-                VM = new EditRowVM(row, inter);
+                VM = new AllLogsEditRowVM(selectedRow, inter);
                 this.DataContext = VM;
-                RowView.ItemsSource = VM.row;
+                RowView.ItemsSource = VM.SelectedRow;
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
             }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -49,6 +46,7 @@ namespace RockySportsView.View.ClockOneView
             try
             {
                 updateRowChanges();
+                this.Close();
             }
 
             catch (Exception ex)
@@ -57,12 +55,11 @@ namespace RockySportsView.View.ClockOneView
             }
         }
 
-        private void updateRowChanges ()
+        private void updateRowChanges()
         {
-
             try
             {
-                Employee oldRow = VM.row[0];
+                Employee oldRow = VM.SelectedRow[0];
                 Employee newRow = (Employee)RowView.Items[0];
                 newRow.CalculateIsAbsence();
                 newRow.CalculateIsError();
@@ -70,19 +67,16 @@ namespace RockySportsView.View.ClockOneView
                 windowBack.VM.Logs.ToList().ForEach((e) => { if (e == oldRow) { e = newRow; } });
 
                 VM.inter.UpdateLog(newRow);
-                windowBack.VM.Emp.logs = (Employee[])windowBack.VM.Logs;
-                LogsHolder newEmp = windowBack.VM.Emp;
-                newEmp.CalculateAll();
-                windowBack.VM.Emp = newEmp;
-                windowBack.LogsView.ItemsSource = windowBack.VM.Emp.logs;
-                this.Close();
+                // windowBack.VM.Logs = (Employee[])windowBack.VM.Logs;
+                // newEmp.CalculateAll();
+                //windowBack.VM.Emp = newEmp;
+                windowBack.LogsView.ItemsSource = windowBack.VM.Logs;
             }
 
             catch (Exception ex)
             {
                 MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
             }
-
         }
     }
 }

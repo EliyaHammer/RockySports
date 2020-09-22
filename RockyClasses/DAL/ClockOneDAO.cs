@@ -21,7 +21,7 @@ namespace RockyClasses.DAL
         {
             // NEEDS TO MAKE ALL THE CHECKUPS !!!! AND EXCEPTIONS ! 
 
-            //clock 1: (all report)
+            //clock 1: (all report) RS-AF3
             //sets the sreamer and reader.
             //sets the row counter as beginning of 
 

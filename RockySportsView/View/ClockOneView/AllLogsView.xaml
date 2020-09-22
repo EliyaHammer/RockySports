@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RockySportsView.View.ClockOneView" xmlns:local2="clr-namespace:RockySportsView.Converters"
         mc:Ignorable="d"
-        Title="AllLogsView" Height="450" Width="800">
+        Title="AllLogsView" Height="450" Width="800" ResizeMode="NoResize">
     <Window.Resources>
         <local2:AbsenceConverter x:Key="Absence"/>
     </Window.Resources>
@@ -21,9 +21,6 @@
                 <DataGridTextColumn Header="יציאה שנייה" Binding="{Binding ChecksOutTwo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="דקות איחור" Binding="{Binding MinutesLate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="דקות עזיבה מוקדמת" Binding="{Binding MinutesEarlyLeave, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="%100" IsReadOnly="True"/>
-                <DataGridTextColumn Header="%125" IsReadOnly="True"/>
-                <DataGridTextColumn Header="%150" IsReadOnly="True"/>
                 <DataGridTextColumn Header="האם נעדר" IsReadOnly="True" Binding="{Binding IsAbsance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource Absence}}"/>
                 <DataGridTextColumn Header="האם שונה ידנית" IsReadOnly="True" Binding="{Binding IsManuallyChanged, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource Absence}}"/>
             </DataGrid.Columns>

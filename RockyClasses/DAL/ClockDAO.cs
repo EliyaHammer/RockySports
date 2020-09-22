@@ -50,11 +50,13 @@ namespace RockyClasses.DAL
                     {
                         if (entity.Employees.ToArray()[i] == found)
                         {
-                            entity.Employees.ToArray()[i] = newLog;
+                            entity.Employees.Remove(found);
                             entity.SaveChanges();
-                            break;
                         }
                     }
+
+                    entity.Employees.Add(newLog);
+                    entity.SaveChanges();
 
                     return true;
                 }

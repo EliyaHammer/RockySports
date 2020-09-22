@@ -16,13 +16,6 @@ namespace RockyClasses.POCO
         public int? TotalMinutesLate { get; private set; }
         private TimeSpan? totalWorkingHours { get; set; }
         public string TotalWorkingHours { get; private set; }
-        public TimeSpan Total100 { get; private set; } //new
-        public TimeSpan Total125 { get; private set; } //new
-        public TimeSpan Total150 { get; private set; } //new
-        //need to add to log and DB is changes manually
-        //need to add IsError for logs 
-        //upadte > without is error
-
         public LogsHolder(Employee[] logs)
         {
             this.logs = logs;
@@ -36,7 +29,6 @@ namespace RockyClasses.POCO
             CalculateAbsence();
             CalculateTotalWorkingDays();
             CalculateTotalWorkingHours();
-            CalculatePrecentage();
         }//ready
 
         private void CalculateAbsence()
@@ -106,6 +98,7 @@ namespace RockyClasses.POCO
 
                     TimeSpan? totalHour1 = endTime - startTime;
                     TimeSpan? totalHour2 = endTime2 - startTime2;
+
                     totalWorkingHours += totalHour1 + totalHour2;
 
                     endTime = new TimeSpan();
@@ -117,7 +110,6 @@ namespace RockyClasses.POCO
 
             TotalWorkingHours = $"{totalWorkingHours.Value.TotalHours}";
 
-        }//new
-        private void CalculatePrecentage () { }//new
+        }
     }
 }

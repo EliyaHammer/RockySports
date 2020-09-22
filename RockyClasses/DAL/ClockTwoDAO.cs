@@ -13,7 +13,7 @@ namespace RockyClasses.DAL
 {
     class ClockTwoDAO : ClockDAO
     {
-        //the 00-month
+        //the 00-month - 5ya10
         public List<Employee> logs { get; private set; }
 
         protected override Employee[] TakeData(string logLocation)

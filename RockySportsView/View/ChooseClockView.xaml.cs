@@ -23,25 +23,56 @@ namespace RockySportsView.View
         private ChooseClockVM VM { get; set; }
         public ChooseClockView()
         {
-            VM = new ChooseClockVM();
-            this.DataContext = VM;
+            try
+            {
+                VM = new ChooseClockVM();
+                this.DataContext = VM;
 
-            InitializeComponent();
+                InitializeComponent();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
 
         private void clockOne_Click(object sender, RoutedEventArgs e)
         {
-            VM.InsertClock("One", this);
+            try
+            {
+                VM.InsertClock("One", this);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
 
         private void clockTwo_Click(object sender, RoutedEventArgs e)
         {
-            VM.InsertClock("Two", this);
+            try
+            {
+                VM.InsertClock("Two", this);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
 
         private void clockThree_Click(object sender, RoutedEventArgs e)
         {
-            VM.InsertClock("Three", this);
+            try
+            {
+                VM.InsertClock("Three", this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
     }
 }

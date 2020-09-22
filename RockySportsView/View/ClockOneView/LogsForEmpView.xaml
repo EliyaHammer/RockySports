@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RockySportsView.View"
         xmlns:local2="clr-namespace:RockySportsView.Converters"
         mc:Ignorable="d"
-        Title="LogsForEmpView" Height="489.577" Width="868.893">
+        Title="LogsForEmpView" Height="489.577" Width="868.893" ResizeMode="NoResize">
     <Window.Resources>
         <local2:AbsenceConverter x:Key="Absence"/>
     </Window.Resources>
@@ -30,9 +30,6 @@
                     <DataGridTextColumn Header="יציאה שנייה" Binding="{Binding ChecksOutTwo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="דקות איחור" Binding="{Binding MinutesLate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="דקות עזיבה מוקדמת" Binding="{Binding MinutesEarlyLeave, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="%100" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="%125" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="%150" IsReadOnly="True"/>
                     <DataGridTextColumn Header="האם נעדר" IsReadOnly="True" Binding="{Binding IsAbsance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource Absence}}"/>
                     <DataGridTextColumn Header="האם שונה ידנית" IsReadOnly="True" Binding="{Binding IsManuallyChanged, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource Absence}}"/>
                 </DataGrid.Columns>
@@ -50,14 +47,14 @@
             <Label Name="EmpName" Content="{Binding Path=EmpName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Height="32" Margin="650,20,0,0" Width="97" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
             <Label Content=":לתקופה" Height="32" Margin="517,20,0,0" Width="106" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
             <Label Name="MonthAndYear" Content="{Binding Path=MonthAndYear, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Height="32" Margin="412,20,0,0" Width="105" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
-            <Label Content=":סה&quot;כ שעות" HorizontalAlignment="Left" Height="37" Margin="92,121,0,0" VerticalAlignment="Top" Width="78" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
-            <Label Content=":סה&quot;כ היעדרויות" HorizontalAlignment="Left" Height="37" Margin="71,163,0,0" VerticalAlignment="Top" Width="97" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
-            <Label Content=":סה&quot;כ דקות איחור" HorizontalAlignment="Left" Height="37" Margin="62,209,0,0" VerticalAlignment="Top" Width="110" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
-            <Label Content=":סה&quot;כ עזיבה מוקדמת" HorizontalAlignment="Left" Height="37" Margin="46,252,0,0" VerticalAlignment="Top" Width="124" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
-            <Label Content="{Binding Emp.TotalWorkingHours, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="37" Margin="0,121,0,0" VerticalAlignment="Top" Width="87" FontFamily="Calibri" FontSize="14"/>
-            <Label Content="{Binding Emp.TotalAbsence, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="37" Margin="12,163,0,0" VerticalAlignment="Top" Width="44" FontFamily="Calibri" FontSize="14"/>
-            <Label Content="{Binding Emp.TotalMinutesLate, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="37" Margin="12,209,0,0" VerticalAlignment="Top" Width="44" FontFamily="Calibri" FontSize="14"/>
-            <Label Content="{Binding Emp.TotalEarlyLeave, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="37" Margin="12,252,0,0" VerticalAlignment="Top" Width="44" FontFamily="Calibri" FontSize="14"/>
+            <Label Content=":סה&quot;כ שעות" HorizontalAlignment="Left" Height="37" Margin="90,131,0,0" VerticalAlignment="Top" Width="78" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <Label Content=":סה&quot;כ היעדרויות" HorizontalAlignment="Left" Height="37" Margin="71,157,0,0" VerticalAlignment="Top" Width="97" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <Label Content=":סה&quot;כ דקות איחור" HorizontalAlignment="Left" Height="37" Margin="62,185,0,0" VerticalAlignment="Top" Width="110" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <Label Content=":סה&quot;כ עזיבה מוקדמת" HorizontalAlignment="Left" Height="37" Margin="46,208,0,0" VerticalAlignment="Top" Width="124" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <Label Content="{Binding Emp.TotalWorkingHours, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="37" Margin="0,131,0,0" VerticalAlignment="Top" Width="87" FontFamily="Calibri" FontSize="14"/>
+            <Label Content="{Binding Emp.TotalAbsence, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="37" Margin="12,157,0,0" VerticalAlignment="Top" Width="44" FontFamily="Calibri" FontSize="14"/>
+            <Label Content="{Binding Emp.TotalMinutesLate, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="37" Margin="12,185,0,0" VerticalAlignment="Top" Width="44" FontFamily="Calibri" FontSize="14"/>
+            <Label Content="{Binding Emp.TotalEarlyLeave, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="37" Margin="12,208,0,0" VerticalAlignment="Top" Width="44" FontFamily="Calibri" FontSize="14"/>
         </Grid>
         <Button x:Name="BackButton" Content="חזור&#xA;" HorizontalAlignment="Left" Height="29" Margin="26,24,0,0" VerticalAlignment="Top" Width="122" BorderBrush="Black" FontSize="16" Cursor="Hand" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" 
             HorizontalContentAlignment="Center" FontWeight="Medium" Grid.ColumnSpan="2" Click="BackButton_Click">

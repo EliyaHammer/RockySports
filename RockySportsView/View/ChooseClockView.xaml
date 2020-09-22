@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RockySportsView.View"
         mc:Ignorable="d"
-        Title="ChooseClockView" Height="450" Width="800">
+        Title="ChooseClockView" Height="450" Width="800" ResizeMode="NoResize">
     <Grid Cursor="None" Background="#FFC0E2F0">
         <Button Name="clockOne" Content="Clock One" HorizontalAlignment="Left" Height="105" Margin="84,205,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" FontWeight="Bold" ClipToBounds="True" Click="clockOne_Click">
             <Button.Background>

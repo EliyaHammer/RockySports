@@ -29,7 +29,7 @@ namespace RockySportsView
         private MainWindowVM viewModel { get; set; }
         public MainWindow()
         {
-
+            //clean DB
             viewModel = new MainWindowVM(this);
             this.DataContext = this.viewModel;
 
@@ -39,21 +39,46 @@ namespace RockySportsView
 
         private void ImportButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.Import();         
+            try
+            {
+                viewModel.Import();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
+
         }
 
         private void ShowByEmpButton_Click(object sender, RoutedEventArgs e)
         {
-            LogsForEmpView logsView = new LogsForEmpView(viewModel.Interface.GetByEmpMonthYear(viewModel.SelectedMonth, viewModel.SelectedYear, viewModel.SelectedEmp), viewModel.Interface);
-            logsView.Show();
-            this.Close();
+            try
+            {
+                LogsForEmpView logsView = new LogsForEmpView(viewModel.Interface.GetByEmpMonthYear(viewModel.SelectedMonth, viewModel.SelectedYear, viewModel.SelectedEmp), viewModel.Interface);
+                logsView.Show();
+                this.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
 
         private void ShowAllWorkers_Click(object sender, RoutedEventArgs e)
         {
-            AllLogsView allView = new AllLogsView(viewModel.Interface.GetAllMonthAndYeah(viewModel.SelectedMonth, viewModel.SelectedYear), viewModel.Interface);
-            allView.Show();
-            this.Close();
+            try
+            {
+                AllLogsView allView = new AllLogsView(viewModel.Interface.GetAllMonthAndYeah(viewModel.SelectedMonth, viewModel.SelectedYear), viewModel.Interface);
+                allView.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
     }
 }

@@ -28,24 +28,48 @@ namespace RockySportsView.View
         public UserInterface inter { get; set; }
         public LogsForEmpView(LogsHolder empLogs, UserInterface inter)
         {
-            InitializeComponent();
-            this.inter = inter;
-            VM = new LogsForEmpVM(empLogs, inter);
-            this.DataContext = VM;
-            LogsView.ItemsSource = VM.Logs.ToList();
+            try
+            {
+                InitializeComponent();
+                this.inter = inter;
+                VM = new LogsForEmpVM(empLogs, inter);
+                this.DataContext = VM;
+                LogsView.ItemsSource = VM.Logs.ToList();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
+
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            main.Show();
-            this.Close();
+            try
+            {
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
 
         private void EditRow_Click(object sender, RoutedEventArgs e)
         {
-            EditRowView edit = new EditRowView((Employee)LogsView.SelectedItem, this, inter) ;
-            edit.ShowDialog();
+            try
+            {
+                EditRowView edit = new EditRowView((Employee)LogsView.SelectedItem, this, inter);
+                edit.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
         }
     }
 }

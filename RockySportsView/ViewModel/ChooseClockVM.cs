@@ -12,13 +12,21 @@ namespace RockySportsView.ViewModel
     {
         public void InsertClock (string ClockType, Window hide)
         {
-            Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            configuration.AppSettings.Settings["ClockType"].Value = ClockType;
-            configuration.Save();
 
-            MainWindow main = new MainWindow();
-            main.Activate();
-            hide.Close();
+            try
+            {
+                Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                configuration.AppSettings.Settings["ClockType"].Value = ClockType;
+                configuration.Save();
+
+                MainWindow main = new MainWindow();
+                main.Activate();
+                hide.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+            }
 
         }
     }

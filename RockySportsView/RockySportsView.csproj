@@ -85,11 +85,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\AllEditRow.xaml">
+    <Page Include="View\ChooseClockView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ChooseClockView.xaml">
+    <Page Include="View\ClockOneView\AllLogsEditRowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,14 +117,15 @@
     <Compile Include="Converters\TextToEnableConverter.cs" />
     <Compile Include="ViewModel\AllLogsVM.cs" />
     <Compile Include="ViewModel\ChooseClockVM.cs" />
+    <Compile Include="ViewModel\ClockOneVM\AllLogsEditRowVM.cs" />
     <Compile Include="ViewModel\ClockOneVM\EditRowVM.cs" />
     <Compile Include="ViewModel\ClockOneVM\LogsForEmpVM.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
-    <Compile Include="View\AllEditRow.xaml.cs">
-      <DependentUpon>AllEditRow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ChooseClockView.xaml.cs">
       <DependentUpon>ChooseClockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClockOneView\AllLogsEditRowView.xaml.cs">
+      <DependentUpon>AllLogsEditRowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ClockOneView\AllLogsView.xaml.cs">
       <DependentUpon>AllLogsView.xaml</DependentUpon>
