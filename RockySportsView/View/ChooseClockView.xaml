@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RockySportsView.View"
         mc:Ignorable="d"
-        Title="ChooseClockView" Height="450" Width="800" ResizeMode="NoResize">
-    <Grid Cursor="None" Background="#FFC0E2F0">
-        <Button Name="clockOne" Content="Clock One" HorizontalAlignment="Left" Height="105" Margin="84,205,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" FontWeight="Bold" ClipToBounds="True" Click="clockOne_Click">
+        Title="Rocky Sport" Height="450" Width="800" ResizeMode="NoResize" Cursor="Arrow" Icon="/RockySportsView;component/rocky.ico">
+    <Grid Cursor="Arrow" Background="#FFC0E2F0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="165*"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="clockOne" Content="RS-AF3" HorizontalAlignment="Left" Height="50" Margin="84,192,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" FontWeight="Bold" ClipToBounds="True" Click="clockOne_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <Button.Background>
                 <SolidColorBrush Color="#FF9BCBDC" Opacity="0.5"/>
             </Button.Background>
@@ -21,8 +25,8 @@
                 </LinearGradientBrush>
             </Button.OpacityMask>
         </Button>
-        <Label Content="בחר את שעונך" Height="88" Margin="167,45,0,0" Width="422" FontSize="48" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold"/>
-        <Button x:Name="clockTwo" Content="Clock Two" HorizontalAlignment="Left" Height="105" Margin="316,205,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" FontWeight="Bold" ClipToBounds="True" Click="clockTwo_Click">
+        <Label Content="בחר את שעונך" Height="88" Margin="167,45,0,0" Width="422" FontSize="48" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" Cursor="Arrow" Grid.ColumnSpan="2"/>
+        <Button x:Name="clockTwo" Content="5YA10" HorizontalAlignment="Left" Height="50" Margin="316,192,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" FontWeight="Bold" ClipToBounds="True" Click="clockTwo_Click" VerticalContentAlignment="Center" Grid.ColumnSpan="2">
             <Button.Background>
                 <SolidColorBrush Color="#FF9BCBDC" Opacity="0.5"/>
             </Button.Background>
@@ -36,7 +40,7 @@
                 </LinearGradientBrush>
             </Button.OpacityMask>
         </Button>
-        <Button x:Name="clockThree" Content="Clock Three" HorizontalAlignment="Left" Height="105" Margin="554,205,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" FontWeight="Bold" ClipToBounds="True" Click="clockThree_Click">
+        <Button x:Name="clockThree" Content="RS-20" HorizontalAlignment="Left" Height="50" Margin="90,192,0,0" VerticalAlignment="Top" Width="165" BorderBrush="Black" FontSize="20" Cursor="Hand" BorderThickness="2" FontWeight="Bold" ClipToBounds="True" Click="clockThree_Click" VerticalContentAlignment="Center" Grid.Column="1">
             <Button.Background>
                 <SolidColorBrush Color="#FF9BCBDC" Opacity="0.5"/>
             </Button.Background>
@@ -50,6 +54,10 @@
                 </LinearGradientBrush>
             </Button.OpacityMask>
         </Button>
+        <Image HorizontalAlignment="Left" Height="111" VerticalAlignment="Top" Width="225" Source="rocky-removebg-preview (1).png" Margin="104.965,0,0,0" Grid.Column="1"/>
+        <Image HorizontalAlignment="Left" Height="154" Margin="86,219,0,0" VerticalAlignment="Top" Width="164" Source="rsaf3.png" Cursor="Hand"/>
+        <Image HorizontalAlignment="Left" Height="157" Margin="319,218,0,0" VerticalAlignment="Top" Width="175" Source="5ya10.png" RenderTransformOrigin="1.331,0.532" Cursor="Hand" Grid.ColumnSpan="2"/>
+        <Image HorizontalAlignment="Left" Height="200" Margin="84,214,0,0" VerticalAlignment="Top" Width="220" Source="rs20.png" RenderTransformOrigin="1.331,0.532" Cursor="Hand" Grid.Column="1"/>
 
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RockySportsView" xmlns:local11="clr-namespace:RockySportsView.Converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+        Title="Rocky Sport" Height="450" Width="800" ResizeMode="NoResize" Icon="/RockySportsView;component/rocky.ico">
     <Window.Resources>
         <local11:TextToEnableConverter x:Key="StringToEnableConverter"/>
     </Window.Resources>
@@ -51,6 +51,7 @@
             <TextBlock Name="IsSucceededTextBlock" HorizontalAlignment="Left" Height="24" Margin="328,140,0,0" TextWrapping="Wrap" Text="{Binding Path=IsSucceeded, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" VerticalAlignment="Top" Width="130"/>
             <ComboBox x:Name="yearChoose"  HorizontalAlignment="Left" Height="24" Margin="396,242,0,0" VerticalAlignment="Top" Width="86" BorderBrush="White" Background="White" ItemsSource="{Binding Path=Years, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedYear, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
             <ComboBox x:Name="monthChoose"  HorizontalAlignment="Left" Height="24" Margin="287,242,0,0" VerticalAlignment="Top" Width="86" BorderBrush="White" Background="White" ItemsSource="{Binding Path=Months, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedMonth, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+            <Image HorizontalAlignment="Left" Height="111" VerticalAlignment="Top" Width="225" Source="rocky-removebg-preview (1).png" Margin="569,0,0,0"/>
         </Grid>
         <Label Content="ייבוא דו''ח" Height="45" Margin="335,39,0,0" Width="116" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
         <Label Content="הצגת דו''ח" Height="45" Margin="335,175,0,0" Width="116" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>

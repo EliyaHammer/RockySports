@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using RockyClasses;
+using RockyClasses.DAL;
 using RockySportsView.View;
 using RockySportsView.View.ClockOneView;
 using RockySportsView.ViewModel;
@@ -26,16 +27,16 @@ namespace RockySportsView
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainWindowVM viewModel { get; set; }
+        public MainWindowVM viewModel { get; private set; }
         public MainWindow()
         {
-            //clean DB
             viewModel = new MainWindowVM(this);
             this.DataContext = this.viewModel;
 
             InitializeComponent();
 
         }
+
 
         private void ImportButton_Click(object sender, RoutedEventArgs e)
         {

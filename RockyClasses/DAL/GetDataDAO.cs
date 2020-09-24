@@ -91,6 +91,22 @@ namespace RockyClasses.DAL
 
             return result;
         }
+        public void CleanDB ()
+        {
+            int year = Convert.ToInt32(DateTime.Now.Year);
+            int yearToDelete = year - 2;
+
+            using (Model1 entity = new Model1())
+            {
+                Employee[] logsToDelete =
+                    (from e in entity.Employees
+                    where e.Date.Year == yearToDelete
+                    select e).ToArray();
+
+                entity.Employees.RemoveRange(logsToDelete);
+                entity.SaveChanges();
+            }
+        }
 
     }
 }

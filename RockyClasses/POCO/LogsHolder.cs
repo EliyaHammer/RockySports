@@ -16,11 +16,12 @@ namespace RockyClasses.POCO
         public int? TotalMinutesLate { get; private set; }
         private TimeSpan? totalWorkingHours { get; set; }
         public string TotalWorkingHours { get; private set; }
+        public string Total125 { get; private set; }
+        public string Total150 { get; private set; }
         public LogsHolder(Employee[] logs)
         {
             this.logs = logs;
         }
-
 
         public void CalculateAll()
         {
@@ -99,6 +100,19 @@ namespace RockyClasses.POCO
                     TimeSpan? totalHour1 = endTime - startTime;
                     TimeSpan? totalHour2 = endTime2 - startTime2;
 
+                    double totalHours = totalHour2.Value.TotalHours + totalHour2.Value.TotalHours;
+
+                    if (totalHours > 10.5)
+                    {
+                        Total150 += totalHours - 10.5;
+                        Total125 += 2;
+                    }
+
+                    else if (totalHours > 8.5)
+                    {
+                        Total125 += totalHours - 8.5;
+                    }
+
                     totalWorkingHours += totalHour1 + totalHour2;
 
                     endTime = new TimeSpan();
@@ -109,6 +123,8 @@ namespace RockyClasses.POCO
             }
 
             TotalWorkingHours = $"{totalWorkingHours.Value.TotalHours}";
+            if (TotalWorkingHours.Length > 5) 
+                  TotalWorkingHours = TotalWorkingHours.Substring(0, 5);
 
         }
     }

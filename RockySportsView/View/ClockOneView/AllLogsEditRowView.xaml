@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RockySportsView.View.ClockOneView" xmlns:local2="clr-namespace:RockySportsView.Converters"
         mc:Ignorable="d"
-        Title="AllLogsEditRowView" Height="232.934" Width="696.458" ResizeMode="NoResize">
+        Title="Rocky Sport" Height="232.934" Width="696.458" ResizeMode="NoResize" Icon="/RockySportsView;component/rocky.ico">
     <Window.Resources>
         <local2:AbsenceConverter x:Key="Absence"/>
     </Window.Resources>

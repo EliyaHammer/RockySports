@@ -1,6 +1,9 @@
-﻿using System;
+﻿using RockyClasses;
+using RockyClasses.DAL;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Hierarchy;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +13,7 @@ namespace RockySportsView.ViewModel
 {
     class ChooseClockVM
     {
-        public void InsertClock (string ClockType, Window hide)
+        public void InsertClock(string ClockType, Window hide)
         {
 
             try
@@ -19,8 +22,7 @@ namespace RockySportsView.ViewModel
                 configuration.AppSettings.Settings["ClockType"].Value = ClockType;
                 configuration.Save();
 
-                MainWindow main = new MainWindow();
-                main.Activate();
+                MessageBox.Show("שעון נבחר בהצלחה! כעת תוכל להפעיל את התוכנה.");
                 hide.Close();
             }
             catch (Exception ex)

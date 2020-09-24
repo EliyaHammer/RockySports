@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RockySportsView.View.ClockOneView" xmlns:local2="clr-namespace:RockySportsView.Converters"
         mc:Ignorable="d"
-        Title="AllLogsView" Height="450" Width="800" ResizeMode="NoResize">
+        Title="Rocky Sport" Height="450" Width="800" ResizeMode="NoResize" Icon="/RockySportsView;component/rocky.ico">
     <Window.Resources>
         <local2:AbsenceConverter x:Key="Absence"/>
     </Window.Resources>
@@ -38,7 +38,7 @@
         <Label Content=":לתקופה" Height="32" Margin="515,25,0,0" Width="106" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
         <Label x:Name="MonthAndYear" Content="{Binding MonthAndYear, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Height="32" Margin="410,25,0,0" Width="105" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" BorderThickness="0,0,0,1" SnapsToDevicePixels="True" BorderBrush="Black"/>
         <Button x:Name="ImportButton_Copy" Content="...ייצא קובץ&#xA;" HorizontalAlignment="Left" Height="29" Margin="179,25,0,0" VerticalAlignment="Top" Width="122" BorderBrush="Black" FontSize="16" Cursor="Hand" BorderThickness="0,0,0,1" ClipToBounds="True" VerticalContentAlignment="Center" 
-            HorizontalContentAlignment="Center" FontWeight="Medium">
+            HorizontalContentAlignment="Center" FontWeight="Medium" Click="ImportButton_Copy_Click">
             <Button.Background>
                 <SolidColorBrush Color="#FF83A8B6" Opacity="0.5"/>
             </Button.Background>

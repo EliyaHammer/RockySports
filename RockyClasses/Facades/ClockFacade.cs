@@ -58,5 +58,10 @@ namespace RockyClasses.Facades
             return ExportFacade.Export();
         }
 
+        public void CleanDB ()
+        {
+            Data.CleanDB();
+        }
+
     }
 }

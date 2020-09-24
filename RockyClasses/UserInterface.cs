@@ -71,5 +71,9 @@ namespace RockyClasses
         {
             return Clock.Export(logs, location, formatType);
         }
+        public void CleanDB ()
+        {
+            Clock.CleanDB();
+        }
     }
 }

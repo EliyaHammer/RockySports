@@ -38,6 +38,19 @@ namespace RockyClasses.Facades
 
             }
 
+            else if (type == FormatsEnum.Sinal)
+            {
+                try
+                {
+                    export.Sinal(Logs, Location);
+                }
+
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+
             //need to add all the rest methods
 
             return true;

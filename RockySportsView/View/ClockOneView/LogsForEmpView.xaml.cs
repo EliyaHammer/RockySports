@@ -62,14 +62,28 @@ namespace RockySportsView.View
         {
             try
             {
-                EditRowView edit = new EditRowView((Employee)LogsView.SelectedItem, this, inter);
-                edit.ShowDialog();
+                if (LogsView.SelectedItem == null)
+                {
+                    MessageBox.Show("לא נבחרה שורה.");
+                }
+
+                else
+                {
+                    EditRowView edit = new EditRowView((Employee)LogsView.SelectedItem, this, inter);
+                    edit.ShowDialog();
+                }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
             }
+        }
+
+        private void ImportButton_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Export export = new Export(inter, VM.Logs.ToArray());
+            export.ShowDialog();
         }
     }
 }

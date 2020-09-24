@@ -38,5 +38,10 @@ namespace RockyClasses.Facades
             else
                 return null;
         }
+
+        public void CleanDB ()
+        {
+            DAO.CleanDB();
+        }
     }
 }

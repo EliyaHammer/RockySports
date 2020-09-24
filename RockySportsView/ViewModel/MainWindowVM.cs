@@ -11,6 +11,8 @@ using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,39 +20,81 @@ using System.Windows.Controls;
 
 namespace RockySportsView.ViewModel
 {
-    class MainWindowVM : INotifyPropertyChanged
+   public class MainWindowVM : INotifyPropertyChanged
     {
+        private Random r = new Random(1000);
+
         public MainWindowVM(Window hide)
         {
             try
             {
-                if (ConfigurationManager.AppSettings["ClockType"] == "")
-                {
-                    ChooseClock(hide);
-                }
-                else if (ConfigurationManager.AppSettings["ClockType"] == "One")
-                {
-                    Interface = new UserInterface(ClocksEnum.ClockOne);
-                }
-                else if (ConfigurationManager.AppSettings["ClockType"] == "Two")
-                {
-                    Interface = new UserInterface(ClocksEnum.ClockTwo);
-                }
-                else if (ConfigurationManager.AppSettings["ClockType"] == "Three")
-                {
-                    Interface = new UserInterface(ClocksEnum.ClockThree);
-                }
-                //here check if the sql exists, if not > create !
-                //else > check the type > make a user interface.
+                    if (ConfigurationManager.AppSettings["Password"] == "" || ConfigurationManager.AppSettings["succeeded"] == "")
+                    {
+                        string pass = ConfigurationManager.AppSettings["Password"];
 
+                        if (ConfigurationManager.AppSettings["Password"] == "")
+                        {
+                            pass = r.Next().ToString();
+
+                            Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                            configuration.AppSettings.Settings["Password"].Value = pass;
+                            configuration.Save();
+
+                            MailMessage message = new MailMessage();
+                            SmtpClient smtp = new SmtpClient();
+                            message.From = new MailAddress("rockysports123@gmail.com");
+                            message.To.Add(new MailAddress(ConfigurationManager.AppSettings["email"]));
+                            message.Subject = "New Client's Password";
+                            message.IsBodyHtml = false;
+                            message.Body = pass;
+                            smtp.Port = 587;
+                            smtp.Host = "smtp.gmail.com";
+                            smtp.EnableSsl = true;
+                            smtp.UseDefaultCredentials = false;
+                            smtp.Credentials = new NetworkCredential("rockysports123@gmail.com", "rocky123Rocky");
+                            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                            smtp.Send(message);
+                        }
+
+                        PasswordView pas = new PasswordView(pass, hide);
+                        pas.ShowDialog();
+                    hide.Hide();
+                        //here open a window and check if its the same number, if it is > close the dialog. else > dont close the dialog. 
+                    }
+
+
+
+
+                    if (ConfigurationManager.AppSettings["ClockType"] == "")
+                    {
+                        ChooseClock(hide);
+                    }
+                    else if (ConfigurationManager.AppSettings["ClockType"] == "One")
+                    {
+                        Interface = new UserInterface(ClocksEnum.ClockOne);
+                    }
+                    else if (ConfigurationManager.AppSettings["ClockType"] == "Two")
+                    {
+                        Interface = new UserInterface(ClocksEnum.ClockTwo);
+                    }
+                    else if (ConfigurationManager.AppSettings["ClockType"] == "Three")
+                    {
+                        Interface = new UserInterface(ClocksEnum.ClockThree);
+                    }
+                    //here check if the sql exists, if not > create !
+                    //else > check the type > make a user interface.
+                
                 DefineDates();
             }
 
             catch (Exception ex)
             {
                 MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
+                hide.Close();
             }
         }
+
+        private string clockType { get; set; }
         public UserInterface Interface { get; set; }
 
         private string isSucceeded;
@@ -219,14 +263,14 @@ namespace RockySportsView.ViewModel
             try
             {
                 ChooseClockView clock = new ChooseClockView();
-                clock.Show();
+                clock.ShowDialog();
                 hide.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
             }
-        }
+        } 
         public void Import ()
         {
             try
@@ -263,7 +307,7 @@ namespace RockySportsView.ViewModel
             }
 
         }
-        private void DefineDates ()
+        public void DefineDates ()
         {
             try
             {

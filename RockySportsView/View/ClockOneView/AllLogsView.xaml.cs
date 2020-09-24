@@ -58,17 +58,34 @@ namespace RockySportsView.View.ClockOneView
 
         private void EditRow_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                AllLogsEditRowView edit = new AllLogsEditRowView((Employee)LogsView.SelectedItem, this, inter);
-                edit.ShowDialog();
+                
+                if (LogsView.SelectedItem == null)
+                    {
+                        MessageBox.Show("לא נבחרה שורה.");
+                    }
+
+                    else
+                    {
+
+                            AllLogsEditRowView edit = new AllLogsEditRowView((Employee)LogsView.SelectedItem, this, inter);
+                            edit.ShowDialog();
+                    }
+
             }
+
 
             catch (Exception ex)
             {
                 MessageBox.Show("תקלה. אנא נסה שנית או צור קשר");
             }
+        }
+
+        private void ImportButton_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Export ex = new Export(inter, VM.Logs.ToArray());
+            ex.ShowDialog();
         }
     }
 }
